@@ -50,3 +50,9 @@ VALUES (
     '08:30:00',
     '16:30:00'
 ) ON DUPLICATE KEY UPDATE id=id;
+
+-- Afegir camps que falten a projects (si no existeixen)
+ALTER TABLE projects
+    ADD COLUMN IF NOT EXISTS description TEXT DEFAULT NULL,
+    ADD COLUMN IF NOT EXISTS created_by INT DEFAULT NULL,
+    ADD FOREIGN KEY IF NOT EXISTS fk_projects_creator (created_by) REFERENCES usuarios(id) ON DELETE SET NULL;

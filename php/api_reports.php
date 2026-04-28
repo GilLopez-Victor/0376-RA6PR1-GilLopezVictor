@@ -120,3 +120,9 @@ switch ($type) {
         http_response_code(400);
         echo json_encode(['error' => 'Tipo no válido. Usa: active, red_list, projects']);
 }
+
+<?php
+require_once "config.php";
+
+$result = $conn->query("SELECT * FROM projects");
+echo json_encode($result->fetch_all(MYSQLI_ASSOC));

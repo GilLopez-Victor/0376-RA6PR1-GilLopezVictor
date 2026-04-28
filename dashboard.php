@@ -77,6 +77,9 @@ $activeEntry = $s->fetch();
             <span class="badge <?= $user['rol'] === 'admin' ? 'badge-blue' : 'badge-green' ?>">
                 <?= $user['rol'] ?>
             </span>
+            <?php if (isAdmin()): ?>
+            <a href="admin.php" class="btn-logout" style="color:var(--accent);border-color:var(--accent)">⚙ Admin</a>
+            <?php endif; ?>
             <form method="POST" action="logout.php" style="margin:0">
                 <button type="submit" class="btn-logout">Salir</button>
             </form>
